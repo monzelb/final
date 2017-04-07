@@ -1,0 +1,15 @@
+<header><h1 class="display-4">Requests</h1></header>
+
+<div id="map-container">
+  <div id="map-canvas"></div>
+</div>
+
+<%= link_to 'Add request', new_request_path, class: 'btn btn-primary btn-lg' %>
+
+<div class="card">
+  <div class="card-block">
+    <ul>
+      <%= render @requests %>
+    </ul>
+  </div>
+</div>
