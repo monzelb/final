@@ -2,6 +2,7 @@ class RequestsController < ApplicationController
  before_action :set_request, only: [:show, :edit, :update, :destroy]
 
   def index
+    @location = Request.first
     @requests = Request.all
   end
 
@@ -11,7 +12,7 @@ class RequestsController < ApplicationController
   end
 
   def search
-    @location= params[:address]
+    @location= Request.geocoded.near(params[:address], 10).first
     @requests = Request.geocoded.near(@location, 10)
   end
 

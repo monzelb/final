@@ -1,15 +1,23 @@
 <header><h1 class="display-4">Requests</h1></header>
 
-<div id="map-container">
-  <div id="map-canvas"></div>
-</div>
+<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@location.latitude},#{@location.longitude}&zoom=9&size=640x400&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
+              class: 'img-fluid img-rounded', alt: "#{@location.title} on the map"%>
 
 <%= link_to 'Add request', new_request_path, class: 'btn btn-primary btn-lg' %>
 
-<div class="card">
-  <div class="card-block">
-    <ul>
-      <%= render @requests %>
-    </ul>
+
+<br>
+<% @requests.each do |request| %>
+  <div class="thumbnail col-md-10 col-md-offset-1">
+    <div class="well title">
+      <h3 class="header-requests text-center"><%= request.title %></h3>
+    </div>
+    <hr>
+    <p class="content-requests"><%= raw request.body.truncate(1000, separator: ' ') %></p>
+    <hr>
+    <div class ="well request-button-well">
+      <%= link_to "Show", request_path(request), class: "col-md-1 btn btn-success" %>
+    </div>
   </div>
-</div>
+<% end %>
+
