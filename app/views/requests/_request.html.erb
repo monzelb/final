@@ -1,4 +1,4 @@
 <li>
   <%= link_to request.title, request_path(request) %>
-  visited by <strong><%= request.distance_to(@location) %></strong>
+  <strong><%= request.distance_to(@location) %></strong> from GA
 </li>
