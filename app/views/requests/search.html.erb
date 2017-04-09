@@ -1,8 +1,8 @@
 <header><h1 class="display-4">Requests</h1></header>
 
 
-<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@location.latitude},#{@location.longitude}&zoom=15&size=640x400&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
-              class: 'img-fluid img-rounded', alt: "#{@location.title} on the map"%>
+<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@address}&zoom=15&size=640x400&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
+              class: 'img-fluid img-rounded search-map', alt: " on the map"%>
 <%= link_to 'Add request', new_request_path, class: 'btn btn-primary btn-lg' %>
 
 <div class="card">

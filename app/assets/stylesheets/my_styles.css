@@ -1,0 +1,15 @@
+.search-map{
+  opacity: .6;
+ }
+
+ body { 
+  padding-top: 70px;
+ }
+
+ .navbar-right {
+  padding-right: 30px;
+ }
+ .dropdown {
+ line-height: 50px;
+}
+

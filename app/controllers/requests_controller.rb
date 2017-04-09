@@ -14,6 +14,7 @@ class RequestsController < ApplicationController
   def search
     @location= Request.geocoded.near(params[:address], 10).first
     @requests = Request.geocoded.near(@location, 10)
+    @address = params[:address]
   end
 
   def new
