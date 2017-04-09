@@ -11,15 +11,43 @@
   </head>
 
   <body>
-
+    <nav>
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <a href="/" class="navbar-brand">Good Neighbor | <small>Lend a hammer, meet a neighbor</small></a>
+        
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav navbar-right ">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">dropdown
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", user_path(current_user), class:"dropdown-item" %></li>
+                <li><%= link_to "Log Out", destroy_user_session_path, method: "delete", class:"dropdown-item" %></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+       
+      </div>
+    </nav>
+    
+    <% if !current_user %>
+    <h2>Where are you?</h2>
     <div class="col-sm-4 col-sm-offset-4 search-bar">
       <div class="input-group">
         <%= form_tag("/search", method: "get") do %>
           <%= text_field_tag(:address) %>
-          <%= submit_tag("Search") %>
+          <%= submit_tag("Search", class: "btn-info") %>
         <% end %>
       </div>
     </div>
+    <% end %>
+
+    <% if current_user %>
+
     <%= yield %>
+
+    <% end %>
+
   </body>
 </html>

@@ -1,4 +1,4 @@
 <li>
   <%= link_to request.title, request_path(request) %>
-  <strong><%= request.distance_to(@location) %></strong> from GA
+  <strong><%= request.distance_to(@location).round(2) %></strong> from GA
 </li>
