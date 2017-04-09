@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :views
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :requests, except: [:update, :edit, :destroy]
@@ -12,6 +13,10 @@ Rails.application.routes.draw do
     as :user do
       get '/users', to: 'users#show', as: "user_root"
     end
+
+    devise_scope :user do
+    get 'settings', to: 'users/registrations#account', as: "user_account"
+  end
 
 
   
