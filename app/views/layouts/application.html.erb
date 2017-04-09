@@ -30,7 +30,9 @@
        
       </div>
     </nav>
-
+    
+    <% if !current_user %>
+    <h2>Where are you?</h2>
     <div class="col-sm-4 col-sm-offset-4 search-bar">
       <div class="input-group">
         <%= form_tag("/search", method: "get") do %>
@@ -39,6 +41,13 @@
         <% end %>
       </div>
     </div>
+    <% end %>
+
+    <% if current_user %>
+
     <%= yield %>
+
+    <% end %>
+
   </body>
 </html>
