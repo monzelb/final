@@ -1,14 +1,14 @@
-<header><h1 class="display-4">Requests</h1></header>
+<header><h1 class="display-4">Requests near <%= @location %></h1></header>
 
-
-<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@address}&zoom=15&size=340x300&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
-              class: 'img-fluid img-rounded search-map', alt: " on the map"%>
-<%= link_to 'Add request', new_request_path, class: 'btn btn-primary btn-lg' %>
-
-<div class="card">
-  <div class="card-block">
+<div class="row">
+  <div class="col-md-6">
     <ul>
       <%= render @requests %>
     </ul>
+</div>
+  <div class= "col-md-3 col-md-offset-1">
+    <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@address}&zoom=15&size=340x300&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
+                  class: 'img-fluid img-rounded search-map', alt: " on the map"%>
   </div>
 </div>
+

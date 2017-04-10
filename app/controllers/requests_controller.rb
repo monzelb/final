@@ -8,13 +8,12 @@ class RequestsController < ApplicationController
 
   def show
     @request = Request.find(params[:id])
-    @message = Message.new
+    @location = Geocoder.coordinates(@request.address)
   end
 
   def search
-    @location= Request.geocoded.near(params[:address], 10).first
+    @location= params[:address]
     @requests = Request.geocoded.near(@location, 10)
-    @address = params[:address]
   end
 
   def new

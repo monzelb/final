@@ -3,28 +3,32 @@
       <h5>Welcome, <%= current_user.first_name%>!</h5>
       <hr>
     </div>
-      <div class= "col-md-6 col-md-offset-2">
+      <div class= "col-md-7 col-md-offset-2">
 
       <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{current_user.home_address}&zoom=11&size=700x300&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8&style=element:geometry%7Ccolor:0xebe3cd&style=element:labels.text.fill%7Ccolor:0x523735&style=element:labels.text.stroke%7Ccolor:0xf5f1e6&style=feature:administrative%7Celement:geometry.stroke%7Ccolor:0xc9b2a6&style=feature:administrative.land_parcel%7Celement:geometry.stroke%7Ccolor:0xdcd2be&style=feature:administrative.land_parcel%7Celement:labels.text.fill%7Ccolor:0xae9e90&style=feature:landscape.natural%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:poi%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:poi%7Celement:labels.text.fill%7Ccolor:0x93817c&style=feature:poi.park%7Celement:geometry.fill%7Ccolor:0xa5b076&style=feature:poi.park%7Celement:labels.text.fill%7Ccolor:0x447530&style=feature:road%7Celement:geometry%7Ccolor:0xf5f1e6&style=feature:road.arterial%7Celement:geometry%7Ccolor:0xfdfcf8&style=feature:road.highway%7Celement:geometry%7Ccolor:0xf8c967&style=feature:road.highway%7Celement:geometry.stroke%7Ccolor:0xe9bc62&style=feature:road.highway.controlled_access%7Celement:geometry%7Ccolor:0xe98d58&style=feature:road.highway.controlled_access%7Celement:geometry.stroke%7Ccolor:0xdb8555&style=feature:road.local%7Celement:labels.text.fill%7Ccolor:0x806b63&style=feature:transit.line%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:transit.line%7Celement:labels.text.fill%7Ccolor:0x8f7d77&style=feature:transit.line%7Celement:labels.text.stroke%7Ccolor:0xebe3cd&style=feature:transit.station%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:water%7Celement:geometry.fill%7Ccolor:0xb9d3c2&style=feature:water%7Celement:labels.text.fill%7Ccolor:0x92998d",
                     class: 'img-fluid img-rounded', alt: "#{current_user.first_name} on the map"%>
-                    <br>
+        <br>
+        <hr>
       </div>
+  
+  <div class= "col-md-7 col-md-offset-2">      <header><h4 class="display-4">Requests in your neighborhood</h4></header>
   </div>
-<header><h1 class="display-4">Requests</h1></header>
-  <%= link_to 'Add request', new_request_path, class: 'btn btn-primary btn-lg' %>
-
-
   <br>
   <% @requests.each do |request| %>
-    <div class="thumbnail col-md-10 col-md-offset-1">
-      <div class="well title">
-        <h3 class="header-requests text-center"><%= request.title %></h3>
+    <div class="thumbnail col-md-7 col-md-offset-2">
+      <div class="title">
+        <a> <strong class="header-requests"><%= link_to request.title, request_path(request) %> </strong>
+        </a>
+        <br>
+        <span class="req-specs"><%= request.user.first_name %> </span>,
+        <span class="req-specs"><%= request.distance_to(@location).round(2) %> miles away</span>
+        <span class="req-specs"> - <%= time_ago_in_words(request.created_at) %> ago</span>
       </div>
-      <hr>
       <p class="content-requests"><%= raw request.body.truncate(1000, separator: ' ') %></p>
       <hr>
       <div class ="well request-button-well">
-        <%= link_to "Show", request_path(request), class: "col-md-1 btn btn-success" %>
+        <%= link_to "reply", request_path(request), class: "btn btn-success" %>
       </div>
     </div>
   <% end %>
+</div>

@@ -1,4 +1,15 @@
-<header><h1 class="display-4"><%= @place.title %></h1></header>
-
-<p>Address: <%= @place.address %></p>
-<p>Coordinates: <%= @place.latitude %> <%= @place.longitude %></p>
+<div class="thumbnail col-md-10 col-md-offset-1">
+  <div class="title">
+    <a> <strong class="header-requests"><%= link_to @request.title, request_path(request) %> </strong>
+    </a>
+    <br>
+    <span class="req-specs"><%= @request.user.first_name %> </span>,
+    <span class="req-specs"><%= @request.distance_to(current_user.home_address).round(2) %> miles away</span>
+    <span class="req-specs"> - <%= time_ago_in_words(@request.created_at) %> ago</span>
+  </div>
+  <p class="content-requests"><%= raw @request.body.truncate(1000, separator: ' ') %></p>
+  <hr>
+  <div class ="well request-button-well">
+    <%= link_to "Show", request_path(@request), class: " btn btn-success" %>
+  </div>
+</div>

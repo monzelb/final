@@ -49,3 +49,30 @@
 li{
   list-style: none;
 }
+
+.header-requests{
+  font-size: 1.1em;
+}
+
+.req-specs{
+  font-size: .9em;
+}
+
+.logo {
+  border-radius: 0% 50% 50% 0%;
+}
+
+.neighbors{
+  width:100%;
+  margin-top: -100px;
+  background-color: white;
+
+}
+
+#jumbo {
+  padding-bottom: 0px;
+}
+
+.btn-success{
+  border-radius: 0 !important;
+}
