@@ -1,3 +1,18 @@
+<div class="thumbnail col-md-10 col-md-offset-1">
+      <div class="well title">
+        <h3 class="header-requests text-center">  <%= link_to request.title, request_path(request) %>
+        </h3>
+        <p><%= request.distance_to(@location).round(2) %> miles away</p>
+        <p><%= request.user.first_name %> </p>
+      </div>
+      <hr>
+      <p class="content-requests"><%= raw request.body.truncate(1000, separator: ' ') %></p>
+      <hr>
+      <div class ="well request-button-well">
+        <%= link_to "Show", request_path(request), class: "col-md-1 btn btn-success" %>
+      </div>
+    </div>
+
 <li>
   <%= link_to request.title, request_path(request) %>
   <strong><%= request.distance_to(@location).round(2) %></strong> from GA
