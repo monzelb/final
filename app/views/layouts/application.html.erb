@@ -13,6 +13,7 @@
   <body>
     <nav>
       <div class="navbar navbar-inverse navbar-fixed-top">
+        <%= image_tag "https://i.imgur.com/gLj2iOG.jpg", :width=> "60px", :height=> "50px", :class=> "logo navbar-left" %>
         <a href="/" class="navbar-brand">Good Neighbor | <small>Lend a hammer, meet a neighbor</small></a>
         <% if current_user %>
         <div class="col-sm-4 col-sm-offset-1 search-bar">
@@ -24,11 +25,18 @@
           </div>
         </div>
         <% end %>
-            
+        <ul class="navbar-right">  
+        </ul>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav navbar-right ">
+            <li class= "add-request"><%= link_to 'Add request', new_request_path %></li>
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">dropdown
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <% if current_user %>
+                  <%= current_user.first_name %>
+                <% else %>
+                  options
+                <% end %>
               <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <% if current_user %>
@@ -46,6 +54,9 @@
        
       </div>
     </nav>
+    <div class= "jumbotron" id= "jumbo">
+      <%= image_tag "https://i.imgur.com/tANo68q.jpg", class: "neighbors" %>
+    </div>
     
     <div class="container">
     
