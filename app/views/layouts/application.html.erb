@@ -24,11 +24,18 @@
           </div>
         </div>
         <% end %>
-            
+        <ul class="navbar-right">  
+        </ul>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav navbar-right ">
+            <li class= "add-request"><%= link_to 'Add request', new_request_path %></li>
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">dropdown
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <% if current_user %>
+                  <%= current_user.first_name %>
+                <% else %>
+                  options
+                <% end %>
               <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <% if current_user %>

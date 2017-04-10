@@ -27,7 +27,7 @@
  }
 
  .navbar-right {
-  padding-right: 30px;
+  padding: 0px 10px 0px 40px;
  }
  .dropdown {
  line-height: 50px;
@@ -41,5 +41,11 @@
   margin-top: 11px;
 }
 
-.search-input{
-  
+.add-request{
+  margin-left: -150px;
+   line-height: 50px;
+  }
+
+li{
+  list-style: none;
+}
