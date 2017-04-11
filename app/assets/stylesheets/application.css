@@ -77,3 +77,8 @@ li{
 .btn-success{
   border-radius: 0 !important;
 }
+
+.thumbnail {
+  border-left: none !important;
+  border-right: none !important;
+}
