@@ -36,9 +36,16 @@ class CommentsController < ApplicationController
     if @comment.body.length < 1 
       flash[:Error] = "Comment length : 1-200 characters. Comment length: Cannot be empty."
       redirect_to new_comment_path(params[:request_id])
-    else
-      redirect_to request_path(@request)
     end
+    if @comment.save
+        UserMailer.comment_notification(@comment, @request).deliver_now
+        flash[:success] = "Thanks for commenting!"
+        redirect_to requests_path(@request)
+    else
+        flash[:danger] = "All fields must be filled in to post a comment."
+        redirect_to new_comment_path(params[:request_id])
+    end
+    
   end
 
   # PATCH/PUT /comments/1
