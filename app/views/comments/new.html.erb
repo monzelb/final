@@ -1,10 +1,10 @@
-<h1>New Comment</h1>
+<h2>Reply to <%= @request.user.first_name %>'s request, "<%= @request.title %>"</h2>
 
 <%= form_for(@comment) do |f| %>
 <%= hidden_field_tag(:request_id, request[:request_id])%>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <h2><%= explode pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
       <ul>
       <% comment.errors.full_messages.each do |message| %>
@@ -15,8 +15,7 @@
   <% end %>
   
   <div class="field">
-    <%= f.label :body %>
-    <%= f.text_field :body %>
+    <%= f.text_area :body %>
   </div>
 
 
