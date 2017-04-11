@@ -12,4 +12,26 @@
   <div class ="well request-button-well">
     <%= link_to "Show", request_path(@request), class: " btn btn-success" %>
   </div>
+  <hr>
+
+
+
+
+<h2 class="text-center"><i><%= link_to "Add A New Comment", new_request_comment_path(@request)%></i></h2>
+<% @comments.each do |comment| %>
+  <div class="thumbnail row col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg -10 col-lg-offset-1">
+    <figure class="figure col-md-2">
+      <figcaption class="caption comment figure-caption"><%= comment.user.first_name %></figcaption>
+    </figure>
+    <div class="col-md-9 col-md-offset-1">
+      <hr>
+      <p class="comment"><%= comment.body%></p>
+      <p><i><%= "Updated #{time_ago_in_words(comment.updated_at)} ago"%></i></p>
+      <% if current_user && current_user == comment.user%>
+        <%= link_to "Edit", edit_comment_path(comment), class: "btn btn-default"%>
+        <%= link_to "Delete", comment_path(comment), method: 'delete', class: "btn btn-default", data: {:confirm => 'Are you sure you want to delete '+ "?"} %>
+      <%end%>
+    </div>
+  </div> 
+<% end %>
 </div>
