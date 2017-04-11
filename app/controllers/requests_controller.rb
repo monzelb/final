@@ -4,6 +4,7 @@ class RequestsController < ApplicationController
   def index
     @location = Request.first
     @requests = Request.all
+    @key = ENV['google_maps_api_key']
   end
 
   def show
@@ -16,7 +17,7 @@ class RequestsController < ApplicationController
   def search
     @location= params[:address]
     @requests = Request.geocoded.near(@location, 10)
-    @key = "AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8"
+    @key = ENV['google_maps_api_key']
   end
 
   def new
