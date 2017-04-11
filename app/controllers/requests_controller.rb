@@ -9,6 +9,8 @@ class RequestsController < ApplicationController
   def show
     @request = Request.find(params[:id])
     @location = Geocoder.coordinates(@request.address)
+    @comments = Comment.where(request_id: @request.id).order("updated_at DESC")
+
   end
 
   def search
@@ -38,5 +40,9 @@ class RequestsController < ApplicationController
 
   def request_params
     params.require(:request).permit(:title, :address, :latitude, :longitude, :body, :user_id)
+  end
+
+  def comment_params
+    params.require(:comment).permit(:body, :request_id, :user_id)
   end
 end
