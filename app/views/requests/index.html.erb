@@ -12,10 +12,11 @@
       </div>
   
   <div class= "col-md-7 col-md-offset-2">      <header><h4 class="display-4">Requests in your neighborhood</h4></header>
+  <hr>
   </div>
-  <br>
+  
   <% @requests.each do |request| %>
-    <div class="thumbnail col-md-7 col-md-offset-2">
+    <div class="thumbnail col-md-7 col-md-offset-2 text-center">
       <div class="title">
         <a> <strong class="header-requests"><%= link_to request.title, request_path(request) %> </strong>
         </a>
@@ -25,10 +26,7 @@
         <span class="req-specs"> - <%= time_ago_in_words(request.created_at) %> ago</span>
       </div>
       <p class="content-requests"><%= raw request.body.truncate(1000, separator: ' ') %></p>
-      <hr>
-      <div class ="well request-button-well">
         <%= link_to "reply", request_path(request), class: "btn btn-success" %>
-      </div>
     </div>
   <% end %>
 </div>

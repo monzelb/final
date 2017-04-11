@@ -3,14 +3,14 @@
         <a> <strong class="header-requests"><%= link_to request.title, request_path(request) %> </strong>
         </a>
         <br>
-        <span class="req-specs"><%= request.user.first_name %> </span>,
+        <span class="req-specs"><strong><%= request.user.first_name %></strong> </span>,
         <span class="req-specs"><%= request.distance_to(@location).round(2) %> miles away</span>
         <span class="req-specs"> - <%= time_ago_in_words(request.created_at) %> ago</span>
       </div>
       <p class="content-requests"><%= raw request.body.truncate(1000, separator: ' ') %></p>
       <hr>
-      <div class ="well request-button-well">
-        <%= link_to "Show", request_path(request), class: "col-md-1 btn btn-success" %>
+      <div class ="reply-btn">
+        <%= link_to "reply", request_path(request), class: "btn btn-success" %>
       </div>
     </div>
 

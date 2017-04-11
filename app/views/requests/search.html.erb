@@ -1,5 +1,7 @@
-<header><h1 class="display-4">Requests near <%= @location %></h1></header>
-
+<div>
+<header><h2 class="display-4">Requests near <%= @location %></h2></header>
+<hr>
+</div>
 <div class="row">
   <div class="col-md-6">
     <ul>
@@ -7,7 +9,7 @@
     </ul>
 </div>
   <div class= "col-md-3 col-md-offset-1">
-    <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@address}&zoom=15&size=340x300&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
+    <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@location}&zoom=14&size=340x300&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
                   class: 'img-fluid img-rounded search-map', alt: " on the map"%>
   </div>
 </div>
