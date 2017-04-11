@@ -89,7 +89,8 @@ li{
 
 .search-input {
   border-radius: 0 !important;
-
+  background-color: #415577 !important;
+  border: none !important;
 }
 
 .profile-pic{
@@ -108,3 +109,22 @@ li{
 .req-header {
   font-size:1.5em;
 }
+
+.title{
+  margin-top: 15px;
+  border: none !important;
+  padding: 10px !important;
+}
+
+.comments{
+  background-color: #dce6f2 !important;
+}
+
+.navbar-inverse {
+  border-bottom: none !important;
+  background-color: #2f3847 !important;
+}
+
+
+
+
