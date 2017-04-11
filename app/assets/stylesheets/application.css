@@ -108,3 +108,18 @@ li{
 .req-header {
   font-size:1.5em;
 }
+
+.title{
+  margin-top: 15px;
+  border: none !important;
+  padding: 10px !important;
+}
+
+.comments{
+  background-color: #dce6f2 !important;
+}
+
+
+
+
+

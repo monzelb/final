@@ -1,37 +1,34 @@
-<div class="col-md-10 col-md-offset-1">
+<div class="col-md-6 col-md-offset-2">
   <span class = "req-header">Request</span>
   <span class="req-specs"> - <%= time_ago_in_words(@request.created_at) %> ago</span>
 </div>
-<div class="thumbnail col-md-10 col-md-offset-1">
-  <div class="title">
-    <a> <strong class="header-requests"><%= link_to @request.title, request_path(request) %> </strong>
-    </a>
+<div class="thumbnail col-md-6 col-md-offset-2">
+  <div class="title well">
+    <span class="header-requests"><strong> <%= @request.title %> </strong></span>
     <br>
     <span class="req-specs"><%= @request.user.first_name %> </span>,
     <span class="req-specs"><%= @request.distance_to(current_user.home_address).round(2) %> miles away</span>
-    
+    <p> </p>
+    <p class="content-requests"><%= raw @request.body.truncate(1000, separator: ' ') %></p>  
   </div>
-  <p class="content-requests"><%= raw @request.body.truncate(1000, separator: ' ') %></p>  
   <hr>
 
+  <span class = "req-header"> <%= @request.comments.length %> replies - </span>
+  <span><%= link_to "Add A New Comment", new_request_comment_path(@request)%></span>
+<div >
 
-
-
-<h2 class="text-center"><i><%= link_to "Add A New Comment", new_request_comment_path(@request)%></i></h2>
 <% @comments.each do |comment| %>
-  <div class="thumbnail row col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg -10 col-lg-offset-1">
-    <figure class="figure col-md-2">
-      <figcaption class="caption comment figure-caption"><%= comment.user.first_name %></figcaption>
-      
-    </figure>
-    <div class="col-md-9 col-md-offset-1">
-      <hr>
-      <p class="comment"><%= comment.body%></p>
-      <p><i><%= "Updated #{time_ago_in_words(comment.updated_at)} ago"%></i></p>
-      <% if current_user && current_user == comment.user%>
-        <%= link_to "Delete", comment_path(comment), method: 'delete', class: "btn btn-default", data: {:confirm => 'Are you sure you want to delete '+ "?"} %>
-      <%end%>
-    </div>
-  </div> 
+    <div class="title well comments">  
+    <span class="req-specs"><%= comment.user.first_name %> </span>,
+    <span class="req-specs"><%= @request.distance_to(current_user.home_address).round(2) %> miles away</span>
+    <p> </p>
+    <p class="content-requests"><%= raw comment.body.truncate(1000, separator: ' ') %></p>
+    <% if current_user && current_user == comment.user%>
+        <%= link_to "Delete", comment_path(comment), method: 'delete', data: {:confirm => 'Are you sure you want to delete '+ "?"} %>
+      <%end%>  
+  </div>
+
+
 <% end %>
+</div>
 </div>
