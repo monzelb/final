@@ -89,7 +89,8 @@ li{
 
 .search-input {
   border-radius: 0 !important;
-
+  background-color: #415577 !important;
+  border: none !important;
 }
 
 .profile-pic{
@@ -119,6 +120,10 @@ li{
   background-color: #dce6f2 !important;
 }
 
+.navbar-inverse {
+  border-bottom: none !important;
+  background-color: #2f3847 !important;
+}
 
 
 
