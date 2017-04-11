@@ -16,6 +16,7 @@ class [users]::RegistrationsController < Devise::RegistrationsController
   end
 
   def show
+    @user
   end
 
   # GET /resource/edit

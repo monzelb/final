@@ -1,24 +1,11 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
-
- *= require my_styles
- *= require requests
- */
-
-
- .search-map{
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/css/mdb.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+       .search-map{
   opacity: .6;
  }
 
@@ -104,7 +91,36 @@ li{
 .slider {
   background-color:teal;
 }
+</style>
+  </head>
+  <body>
+    <nav>
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <%= image_tag "https://i.imgur.com/gLj2iOG.jpg", :width=> "50px", :height=> "50px", :class=> "logo navbar-left" %>
+        <a href="/" class="navbar-brand">Good Neighbor | <small>Lend a hammer, meet a neighbor</small></a>
+       
+       
+      </div>
+    </nav>
+    <div class= "jumbotron" id= "jumbo">
+      <%= image_tag "https://i.imgur.com/tANo68q.jpg", class: "neighbors" %>
+    </div>
+    
+    <div class="container">
+    
 
-.req-header {
-  font-size:1.5em;
-}
+
+    <%= yield %>
+
+  </div>
+  <div class="thumbnail col-md-7 col-md-offset-2">
+    <div class="title">
+      <p>Brett, there is a new comment on the request: <span><%= @request.title %></span>
+      </p> 
+      <p><strong><%= @comment.user.first_name %></strong> wrote:</p>
+      <p> "<%= @comment.body %>"</p>
+      <p>  <%= mail_to @comment.user.email, "Reply to them" %> </p>
+    </div>
+    </div>
+  </body>
+</html>
