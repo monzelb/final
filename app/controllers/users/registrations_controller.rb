@@ -8,10 +8,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-      @user = User.create( user_params )
+  # def create
+  #     @user = User.create( user_params )
 
-  end
+  # end
 
   def show
     @user
