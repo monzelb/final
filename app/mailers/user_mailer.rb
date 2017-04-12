@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
   def comment_notification(comment, request)
     @comment = comment
     @request= request
-    mail(to: 'monzelb@gmail.com', subject: 'subject')
+    mail(to: @request.user.email, subject: 'subject')
   end
 
 end
