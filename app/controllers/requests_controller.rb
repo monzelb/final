@@ -5,11 +5,13 @@ class RequestsController < ApplicationController
     @location = Request.first
     @requests = Request.all
     @key = ENV['google_maps_api_key']
+    @markers = Request.geocoded.near(@location, 10)
+
   end
 
   def show
     @request = Request.find(params[:id])
-    @location = @request.address
+    @location = Geocoder.coordinates(@request.address)
     @comments = Comment.where(request_id: @request.id).order("updated_at DESC")
 
   end

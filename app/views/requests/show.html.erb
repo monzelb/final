@@ -4,6 +4,20 @@
 </div>
 <div class="thumbnail col-md-6 col-md-offset-2">
   <div class="title well">
+    <div class="col-md-2 user-caption">
+        <% if !@request.user[:avatar].nil? %>
+        <%= image_tag @request.user[:avatar], :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
+        <% else %>
+          <%= image_tag ("https://api.adorable.io/avatars/200/abott@adorable.png"), :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
+        <% end%>
+        <br>
+        <span class="req-specs"><%= @request.user.first_name %> </span>
+        <br>
+        <% if @request.user != current_user %>
+        <span class="req-specs"><%= @request.distance_to(@location).round(2) %> mi away</span>
+        <% end%>
+
+      </div>
     <span class="header-requests"><strong> <%= @request.title %> </strong></span>
     <br>
     <span class="req-specs"><%= @request.user.first_name %> </span>,
@@ -19,6 +33,20 @@
 
 <% @comments.each do |comment| %>
     <div class="title well comments">  
+    <div class="col-md-2 user-caption">
+        <% if !comment.user[:avatar].nil? %>
+        <%= image_tag comment.user[:avatar], :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
+        <% else %>
+          <%= image_tag ("https://api.adorable.io/avatars/200/abott@adorable.png"), :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
+        <% end%>
+        <br>
+        <span class="req-specs"><%= comment.user.first_name %> </span>
+        <br>
+        <% if comment.user != current_user %>
+        <span class="req-specs"><%= @request.distance_to(@location).round(2) %> mi away</span>
+        <% end%>
+
+      </div>
     <span class="req-specs"><%= comment.user.first_name %> </span>,
     <span class="req-specs"><%= @request.distance_to(current_user.home_address).round(2) %> miles away</span>
     <p> </p>
