@@ -6,7 +6,6 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
 
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.perform_deliveries = true
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
@@ -15,8 +14,8 @@ Rails.application.configure do
       domain: "gmail.com",
       authentication: "plain",
       enable_starttls_auto: true,  
-      user_name: ENV["gmail_user_name"],
-      password: ENV["gmail_password"]
+      user_name: "monzelb@gmail.com",
+      password: "lbsccduprbiveprj"
   }
 
 
