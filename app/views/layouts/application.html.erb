@@ -25,6 +25,7 @@
           </div>
         </div>
         <% end %>
+        <% if current_user %>
         <ul class="navbar-right">  
         </ul>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -32,25 +33,21 @@
             <li class= "add-request"><span class="glyphicon glyphicon-wrench "></span><%= link_to ' Make a request', new_request_path %></li>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <% if current_user && !current_user[:avatar].nil? %>
+                <% if !current_user[:avatar].nil? %>
                   <%= image_tag current_user[:avatar], :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
-                <% else %>
-                  <%= image_tag ("https://api.adorable.io/avatars/200/abott@adorable.png"), :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
                 <% end %>
-              <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <% if current_user %>
-                <li><%= link_to "Profile", user_path(current_user) %></li>
-                <li><%= link_to "Log Out", destroy_user_session_path, method: "delete", class:"dropdown-item" %></li>
+                <%= image_tag ("https://api.adorable.io/avatars/200/abott@adorable.png"), :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
+                  <span class="caret"></span>
+              </a>
+                  <ul class="dropdown-menu">
+                    
+                    <li><%= link_to "Profile", user_path(current_user) %></li>
+                    <li><%= link_to "Log Out", destroy_user_session_path, method: "delete", class:"dropdown-item" %></li>
 
-                <% elsif !current_user %>
-                <li><%= link_to "Log In", new_user_session_path %></li>
-                <li><%= link_to "Join", new_user_registration_path %></li>
-
-                <% end %>
               </ul>
             </li>
           </ul>
+          <% end %>
         </div>
        
       </div>
