@@ -42,13 +42,8 @@
         <br>
         <span class="req-specs"><%= comment.user.first_name %> </span>
         <br>
-        <% if comment.user != current_user %>
-        <span class="req-specs"><%= @request.distance_to(@location).round(2) %> mi away</span>
-        <% end%>
 
       </div>
-    <span class="req-specs"><%= comment.user.first_name %> </span>,
-    <span class="req-specs"><%= @request.distance_to(current_user.home_address).round(2) %> miles away</span>
     <p> </p>
     <p class="content-requests"><%= raw comment.body.truncate(1000, separator: ' ') %></p>
     <% if current_user && current_user == comment.user%>
