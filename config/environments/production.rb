@@ -8,15 +8,16 @@ config.active_record.dump_schema_after_migration = false
   config.action_mailer.default_url_options = { :host => 'https://www.goodneighbor1.herokuapp.com' }
   config.action_mailer.default :charset => "utf-8"
   config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   address: "smtp.sendgrid.net",
-  #   port: "587",
-  #   domain: "heroku.com",
-  #   authentication: "plain",
-  #   enable_starttls_auto: true,  
-  #   user_name: ENV["SENDGRID_USERNAME"],
-  #   password: ENV["SENDGRID_PASSWORD"]
-  # }
+  
+  ActionMailer::Base.smtp_settings = {
+  :user_name => ENV['SENDGRID_USERNAME'],
+  :password => ENV['SENDGRID_PASSWORD'],
+  :domain => 'yourdomain.com',
+  :address => 'smtp.sendgrid.net',
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
 
 
   # Code is not reloaded between requests.
