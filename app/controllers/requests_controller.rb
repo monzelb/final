@@ -9,7 +9,7 @@ class RequestsController < ApplicationController
 
   def show
     @request = Request.find(params[:id])
-    @location = Geocoder.coordinates(@request.address)
+    @location = @request.address
     @comments = Comment.where(request_id: @request.id).order("updated_at DESC")
 
   end
