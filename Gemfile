@@ -32,6 +32,7 @@ gem 'geocoder'
 gem 'redis', '~> 3.2'
 
 gem "figaro"
+gem 'sendgrid-ruby'
 
 
 # Use ActiveModel has_secure_password

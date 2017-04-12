@@ -121,7 +121,8 @@ li{
 }
 
 .user-caption{
-  margin: 20px 0px 0px 20px;
+  margin-right: 20px;
+  padding-right: 0px !important;
 }
 
 .num-replies{
