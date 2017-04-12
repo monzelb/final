@@ -14,7 +14,7 @@
         <span class="req-specs"><%= @request.user.first_name %> </span>
         <br>
         <% if @request.user != current_user %>
-          <span class="req-specs"><%= @request.distance_to(current_user.home_address).round(2) %> miles away</span>
+          <span class="req-specs"><%= @request.distance_to(current_user.home_address).round(1) %> mi away</span>
         <% end%>
 
       </div>

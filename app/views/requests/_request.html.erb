@@ -4,7 +4,7 @@
         </a>
         <br>
         <span class="req-specs"><strong><%= request.user.first_name %></strong> </span>,
-        <span class="req-specs"><%= request.distance_to(@location).round(2) %> miles away</span>
+        <span class="req-specs"><%= request.distance_to(@location).round(1) %> miles away</span>
         <span class="req-specs"> - <%= time_ago_in_words(request.created_at) %> ago</span>
       </div>
       <p class="content-requests"><%= raw request.body.truncate(1000, separator: ' ') %></p>
