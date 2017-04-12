@@ -60,14 +60,13 @@ li{
 
 .neighbors{
   width:100%;
-  margin-top: -100px;
+  margin-top: -80px;
   background-color: white;
 
 }
 
 #jumbo {
   padding-bottom: 0px;
-  opacity: .9;
 }
 
 .btn-success{
@@ -119,6 +118,10 @@ li{
 .navbar-inverse {
   border-bottom: none !important;
   background-color: #2f3847 !important;
+}
+
+.user-caption{
+  margin: 20px 0px 0px 20px;
 }
 
 
