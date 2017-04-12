@@ -1,6 +1,6 @@
   <div class="row">
     <div class= "col-md-7 col-md-offset-2">
-      <h4>Hello, <%= current_user.first_name%>!</h4>
+      <h4>Hello, <%= current_user.first_name%>! Browse requests in your neighborhood, or <%= link_to ' Make a request', new_request_path %></h4>
       <hr>
     </div>
       <div class= "col-md-7 col-md-offset-2">
@@ -32,7 +32,7 @@
         <span class="req-specs"><%= request.user.first_name %> </span>,
         <br>
         <% if request.user != current_user %>
-         <span class="req-specs"><%= request.distance_to(@location).round(2) %> mi away</span>
+         <span class="req-specs"><%= request.distance_to(current_user.home_address).round(2) %> mi away</span>
         <% end%>
 
       </div>
