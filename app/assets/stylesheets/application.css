@@ -125,6 +125,11 @@ li{
   padding-right: 0px !important;
 }
 
+.user-caption-index{
+  margin: 30px 0px 0px 0px;
+  padding-right: 0px !important;
+}
+
 .num-replies{
   font-size: .8em;
 }

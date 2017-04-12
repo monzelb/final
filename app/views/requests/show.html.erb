@@ -44,7 +44,8 @@
         <br>
 
       </div>
-    <p> </p>
+    <span class="req-specs"> <%= time_ago_in_words(comment.created_at) %> ago</span>
+    <br>
     <p class="content-requests"><%= raw comment.body.truncate(1000, separator: ' ') %></p>
     <% if current_user && current_user == comment.user%>
         <%= link_to "Delete", comment_path(comment), method: 'delete', data: {:confirm => 'Are you sure you want to delete '+ "?"} %>

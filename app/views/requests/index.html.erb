@@ -22,14 +22,14 @@
   
   <% @requests.each do |request| %>
     <div class="thumbnail col-md-7 col-md-offset-2">
-      <div class="col-md-2 user-caption">
+      <div class="col-md-2 user-caption-index">
         <% if !request.user[:avatar].nil? %>
         <%= image_tag request.user[:avatar], :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
         <% else %>
           <%= image_tag ("https://api.adorable.io/avatars/200/abott@adorable.png"), :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
         <% end%>
         <br>
-        <span class="req-specs"><%= request.user.first_name %> </span>,
+        <span class="req-specs"><%= request.user.first_name %> </span>
         <br>
         <% if request.user != current_user %>
          <span class="req-specs"><%= request.distance_to(current_user.home_address).round(1) %> mi away</span>
