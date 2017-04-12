@@ -14,7 +14,7 @@
   <hr>
 
   <span class = "req-header"> <%= @request.comments.length %> replies - </span>
-  <span><%= link_to "Add A New Comment", new_request_comment_path(@request)%></span>
+  <span><%= link_to "Add a new reply", new_request_comment_path(@request)%></span>
 <div >
 
 <% @comments.each do |comment| %>
