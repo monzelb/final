@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: 'monzelb@mail.com'
+  default from: 'monzelb@gmail.com'
 
   def comment_notification(comment, request)
     @comment = comment
