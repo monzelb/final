@@ -1,10 +1,10 @@
-<div class="col-md-6 col-md-offset-2">
+<div class="col-md-6 col-md-offset-3">
   <span class = "req-header">Request</span>
   <span class="req-specs"> - <%= time_ago_in_words(@request.created_at) %> ago</span>
   <p class="req-specs"> <%= @request.address %></p>
 </div>
-<div class="thumbnail col-md-6 col-md-offset-2">
-  <div class="title well">
+<div class="thumbnail col-md-6 col-md-offset-3">
+  <div class="title well ">  
     <div class="col-md-2 user-caption">
         <% if !@request.user[:avatar].nil? %>
         <%= image_tag @request.user[:avatar], :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
@@ -14,22 +14,20 @@
         <br>
         <span class="req-specs"><%= @request.user.first_name %> </span>
         <br>
-        <% if @request.user != current_user %>
-          <span class="req-specs"><%= @request.distance_to(current_user.home_address).round(1) %> mi away</span>
-        <% end%>
 
       </div>
-    <span class="header-requests"><strong> <%= @request.title %> </strong></span>
+    <span class="req-specs"> <%= time_ago_in_words(@request.created_at) %> ago</span>
     <br>
-    <span class="req-specs"><%= @request.user.first_name %> </span>,
-    
-    <p> </p>
-    <p class="content-requests"><%= raw @request.body.truncate(1000, separator: ' ') %></p>  
+    <p class="content-requests"><%= raw @request.body.truncate(1000, separator: ' ') %></p>
+    <% if current_user && current_user == @request.user%>
+        <%= link_to "Delete", requests_destroy_path(@request), method: 'delete', data: {:confirm => 'Are you sure you want to delete '+ "?"} %>
+      <%end%>  
   </div>
   <hr>
 
   <span class = "req-header"> <%= @request.comments.length %> replies - </span>
   <span><%= link_to "Add a new reply", new_request_comment_path(@request)%></span>
+   
 <div >
 
 <% @comments.each do |comment| %>
@@ -49,7 +47,7 @@
     <br>
     <p class="content-requests"><%= raw comment.body.truncate(1000, separator: ' ') %></p>
     <% if current_user && current_user == comment.user%>
-        <%= link_to "Delete", comment_path(comment), method: 'delete', data: {:confirm => 'Are you sure you want to delete '+ "?"} %>
+        <%= link_to "Delete", comment_destroy_path(comment), method: 'delete', data: {:confirm => 'Are you sure you want to delete '+ "?"} %>
       <%end%>  
   </div>
 

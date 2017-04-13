@@ -58,10 +58,42 @@
     </div>
     
     <div class="container">
-    
+    <div class= "row">
 
 
     <%= yield %>
+
+      
+          
+    <div class="col-md-3 scrollspy">
+      <ul id="nav" class="nav hidden-xs hidden-sm" data-spy="affix">
+        <li class="slider-image">
+          <a href="/"><% if !current_user[:avatar].nil? %>
+                  <%= image_tag current_user[:avatar], :width=> "60px", :height=> "60px", :class=> "profile-pic" %>
+                <% else %>
+                <%= image_tag ("https://api.adorable.io/avatars/200/abott@adorable.png"), :width=> "60px", :height=> "60px", :class=> "profile-pic" %>
+                <% end%></a>
+        </li>
+        <li>
+          <a href="#web-development">Web Development</a>
+          <ul class="nav">
+            <li>
+              <a href="#ruby">
+                <span class="fa fa-angle-double-right"></span>Ruby
+              </a>
+            </li>
+            <li>
+              <a href="#python">
+                <span class="fa fa-angle-double-right"></span>Python
+              </a>
+            </li>
+
+          </ul><!--end of sub navigation-->
+        </li>    
+
+      </ul><!-- end of main navigation -->
+    </div>
+
 
   </div>
   </body>

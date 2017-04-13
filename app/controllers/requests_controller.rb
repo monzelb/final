@@ -36,11 +36,17 @@ class RequestsController < ApplicationController
         UserMailer.request_notification(@request, user).deliver_now
         
         end
-      flash[:success] = 'Request added!'
+        flash[:success] = 'Request added!'
+      end
+      redirect_to requests_path
     end
+  end
+
+  def destroy
+    @request = Request.find(params[:id])
+    @request.destroy
     redirect_to requests_path
   end
-end
 
   private
 

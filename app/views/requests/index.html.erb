@@ -1,5 +1,4 @@
-  <div class="row">
-    <div class= "col-md-7 col-md-offset-2">
+    <div class= "col-md-7 col-md-offset-3">
       <h4>Hello, <%= current_user.first_name%>! Browse requests in your neighborhood, or <%= link_to ' Make a request', new_request_path %></h4>
       <hr>
     
@@ -7,29 +6,12 @@
                     class: 'img-fluid img-rounded', alt: "#{current_user.first_name} on the map"%>
         <br>
         <hr>
-  </div>
-    <div class="col-md-2 col-md-offset-1">
-      <div data-spy="affix" data-offset-top="50" class = "slider col-md-2 col-md-offset-1">
-        <div class="col-md-2 slide-image">
-          <% if !current_user[:avatar].nil? %>
-          <%= image_tag current_user[:avatar], :width=> "50px", :height=> "50px", :class=> "profile-pic-slide" %>
-          <% else %>
-          <%= image_tag ("https://api.adorable.io/avatars/200/abott@adorable.png"), :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
-          <% end%>
-          <br>
-          <span class="req-specs"> Your activity:</span>
-          <br>
-          <span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class= "col-md-7 col-md-offset-2">      <header><h4 class="display-4">Requests in your neighborhood</h4></header>
+
+        <header><h4 class="display-4">Requests in your neighborhood</h4></header>
   <hr>
-  </div>
   
   <% @requests.each do |request| %>
-    <div class="thumbnail col-md-7 col-md-offset-2">
+    <div class="thumbnail col-md-12">
       <div class="col-md-2 user-caption-index">
         <% if !request.user[:avatar].nil? %>
         <%= image_tag request.user[:avatar], :width=> "30px", :height=> "30px", :class=> "profile-pic" %>

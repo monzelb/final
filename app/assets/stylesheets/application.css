@@ -25,6 +25,7 @@
  body { 
   padding-top: 70px;
   overflow:scroll;
+  position:relative;
  }
 
  .navbar-right {
@@ -99,8 +100,7 @@ li{
   font-size:1.3em;
 }
 
-.slider {
-}
+
 
 .req-header {
   font-size:1.5em;
@@ -136,8 +136,8 @@ li{
 }
 
 .affix {
-    top:270px;
-    right:0;
+    top:330px;
+    left:0;
     position:fixed;
 }
 
@@ -145,6 +145,11 @@ li{
   margin-left:20px;
 }
 
+.buffer {
+  height:90px;
+}
 
-
+.slider-image{
+  margin-left: 50px;
+}
 
