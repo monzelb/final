@@ -3,54 +3,56 @@
   <span class="req-specs"> - <%= time_ago_in_words(@request.created_at) %> ago</span>
   <p class="req-specs"> <%= @request.address %></p>
 
-<div class="thumbnail ">
-  <div class="title well ">  
-    <div class="col-md-2 user-caption">
-        <% if !@request.user[:avatar].nil? %>
-        <%= image_tag @request.user[:avatar], :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
-        <% else %>
-          <%= image_tag ("https://api.adorable.io/avatars/200/abott@adorable.png"), :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
-        <% end%>
-        <br>
-        <span class="req-specs"><%= @request.user.first_name %> </span>
-        <br>
+  <div class="thumbnail ">
+    <div class="title well ">  
+      <div class="col-md-2 user-caption">
+          <% if !@request.user[:avatar].nil? %>
+          <%= image_tag @request.user[:avatar], :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
+          <% else %>
+            <%= image_tag ("https://api.adorable.io/avatars/200/abott@adorable.png"), :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
+          <% end%>
+          <br>
+          <span class="req-specs"><%= @request.user.first_name %> </span>
+          <br>
 
       </div>
-    <span class="req-specs"> <%= time_ago_in_words(@request.created_at) %> ago</span>
-    <br>
-    <p class="content-requests"><%= raw @request.body.truncate(1000, separator: ' ') %></p>
-    <% if current_user && current_user == @request.user%>
-        <%= link_to "Delete", requests_destroy_path(@request), method: 'delete', data: {:confirm => 'Are you sure you want to delete '+ "?"} %>
-      <%end%>  
+      <span class="req-specs"> <%= time_ago_in_words(@request.created_at) %> ago</span>
+      <br>
+      <p class="content-requests"><%= raw @request.body.truncate(1000, separator: ' ') %></p>
+      <% if current_user && current_user == @request.user%>
+          <%= link_to "Delete", requests_destroy_path(@request), method: 'delete', data: {:confirm => 'Are you sure you want to delete '+ "?"} %>
+        <%end%>  
+    </div>
+    <hr>
+
+    <span class = "req-header"> <%= @request.comments.length %> replies - </span>
+    <span><%= link_to "Add a new reply", new_request_comment_path(@request)%></span>
   </div>
-  <hr>
+  <div >
 
-  <span class = "req-header"> <%= @request.comments.length %> replies - </span>
-  <span><%= link_to "Add a new reply", new_request_comment_path(@request)%></span>
-   
-<div >
+    <% @comments.each do |comment| %>
+      <div class="title well comments">  
+        <div class="col-md-2 user-caption">
+            <% if !comment.user[:avatar].nil? %>
+            <%= image_tag comment.user[:avatar], :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
+            <% else %>
+              <%= image_tag ("https://api.adorable.io/avatars/200/abott@adorable.png"), :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
+            <% end%>
+            <br>
+            <span class="req-specs"><%= comment.user.first_name %> </span>
+            <br>
 
-<% @comments.each do |comment| %>
-    <div class="title well comments">  
-    <div class="col-md-2 user-caption">
-        <% if !comment.user[:avatar].nil? %>
-        <%= image_tag comment.user[:avatar], :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
-        <% else %>
-          <%= image_tag ("https://api.adorable.io/avatars/200/abott@adorable.png"), :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
-        <% end%>
+        </div>
+        <span class="req-specs"> <%= time_ago_in_words(comment.created_at) %> ago</span>
         <br>
-        <span class="req-specs"><%= comment.user.first_name %> </span>
-        <br>
-
+        <p class="content-requests"><%= raw comment.body.truncate(1000, separator: ' ') %></p>
+        <% if current_user && current_user == comment.user%>
+            <%= link_to "Delete", comment_destroy_path(comment), method: 'delete', data: {:confirm => 'Are you sure you want to delete '+ "?"} %>
+          <%end%>  
       </div>
-    <span class="req-specs"> <%= time_ago_in_words(comment.created_at) %> ago</span>
-    <br>
-    <p class="content-requests"><%= raw comment.body.truncate(1000, separator: ' ') %></p>
-    <% if current_user && current_user == comment.user%>
-        <%= link_to "Delete", comment_destroy_path(comment), method: 'delete', data: {:confirm => 'Are you sure you want to delete '+ "?"} %>
-      <%end%>  
+
+
+    <% end %>
   </div>
-
-
-<% end %>
+  
 </div>
