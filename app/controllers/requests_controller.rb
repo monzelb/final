@@ -2,10 +2,9 @@ class RequestsController < ApplicationController
  before_action :set_request, only: [:show, :edit, :update, :destroy]
 
   def index
-    @location = Request.first
-    @requests = Request.all
+    @location = current_user.home_address
     @key = ENV['google_maps_api_key']
-    @markers = Request.geocoded.near(@location, 10)
+    @requests = Request.geocoded.near(@location, 10)
 
   end
 
