@@ -68,25 +68,25 @@
     <div class="col-md-3 scrollspy">
       <ul id="nav" class="nav hidden-xs hidden-sm" data-spy="affix">
         <li class="slider-image">
-          <a href="/"><% if !current_user[:avatar].nil? %>
+          <a class="hover-pic" href="/"><% if !current_user[:avatar].nil? %>
                   <%= image_tag current_user[:avatar], :width=> "60px", :height=> "60px", :class=> "profile-pic" %>
                 <% else %>
                 <%= image_tag ("https://api.adorable.io/avatars/200/abott@adorable.png"), :width=> "60px", :height=> "60px", :class=> "profile-pic" %>
                 <% end%></a>
         </li>
-        <li>
-          <a href="#web-development">Web Development</a>
+        <li class= "center">
+          <span>Your activity</span><br>
           <ul class="nav">
+            <% current_user.requests[0..3].each do |request| %>
             <li>
-              <a href="#ruby">
-                <span class="fa fa-angle-double-right"></span>Ruby
-              </a>
+              <%= link_to request.title, request_path(request) %>
             </li>
+            <% end %> 
+            <% current_user.comments[0..3].each do |comment| %>
             <li>
-              <a href="#python">
-                <span class="fa fa-angle-double-right"></span>Python
-              </a>
+              <%= link_to comment.request.title, request_path(comment.request) %>
             </li>
+            <% end %> 
 
           </ul><!--end of sub navigation-->
         </li>    

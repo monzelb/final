@@ -150,6 +150,14 @@ li{
 }
 
 .slider-image{
-  margin-left: 50px;
+  margin-left: 43px;
 }
+
+.hover-pic:hover {
+  background-color:white !important;
+}
+.center{
+  text-align:center;
+}
+
 
