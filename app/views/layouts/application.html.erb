@@ -53,48 +53,52 @@
        
       </div>
     </nav>
+
+
     <div class= "jumbotron" id= "jumbo">
       <%= image_tag "https://i.imgur.com/v06ZvvI.jpg", class: "neighbors" %>
     </div>
     
     <div class="container">
-    <div class= "row">
+      <div class= "row">
 
 
-    <%= yield %>
+      <%= yield %>
 
-      
-    <% if current_user %>
-    <div class="col-md-3 scrollspy">
-      <ul id="nav" class="nav hidden-xs hidden-sm center" data-spy="affix">
-        <li class="slider-image">
-          <a class="hover-pic" href="/users/"><% if !current_user[:avatar].nil? %>
-                  <%= image_tag current_user[:avatar], :width=> "60px", :height=> "60px", :class=> "profile-pic" %>
-                <% else %>
-                <%= image_tag ("https://api.adorable.io/avatars/200/abott@adorable.png"), :width=> "60px", :height=> "60px", :class=> "profile-pic" %>
-                <% end%></a>
-        </li>
-        <li >
-          <span>Your activity</span><br>
-          <ul class="nav">
-            <% current_user.requests.first(3).each do |request| %>
-            <li>
-              <%= link_to request.title, request_path(request) %>
+          
+      <% if current_user %>
+
+        <div class="col-md-3 scrollspy">
+          <ul id="nav" class="nav hidden-xs hidden-sm center" data-spy="affix">
+            <li class="slider-image">
+              <a class="hover-pic" href="/users/"><% if !current_user[:avatar].nil? %>
+                      <%= image_tag current_user[:avatar], :width=> "60px", :height=> "60px", :class=> "profile-pic" %>
+                    <% else %>
+                    <%= image_tag ("https://api.adorable.io/avatars/200/abott@adorable.png"), :width=> "60px", :height=> "60px", :class=> "profile-pic" %>
+                    <% end%></a>
             </li>
-            <% end %> 
-            <% current_user.comments.first(3).each do |comment| %>
-            <li>
-              <%= link_to comment.request.title, request_path(comment.request) %>
-            </li>
-            <% end %> 
+            <li >
+              <span>Your activity</span><br>
+              <ul class="nav">
+                <% current_user.requests.first(3).each do |request| %>
+                <li>
+                  <%= link_to request.title, request_path(request) %><small> <%= time_ago_in_words(request.updated_at) %> ago</small>
+                </li>
+                <% end %> 
+                <% current_user.comments.first(3).each do |comment| %>
+                <li>
+                  <%= link_to comment.request.title, request_path(comment.request) %><small> <%= time_ago_in_words(comment.created_at) %> ago</small>
+                </li>
+                <% end %> 
 
-          </ul><!--end of sub navigation-->
-        </li>    
+              </ul><!--end of sub navigation-->
+            </li>    
+          </ul><!-- end of main navigation -->
+        </div>
+      <% end %>
 
-      </ul><!-- end of main navigation -->
+
+      </div>
     </div>
-    <% end %>
-
-  </div>
   </body>
 </html>
