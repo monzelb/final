@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/css/mdb.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+       .search-map{
+  opacity: .6;
+ }
+
+ body { 
+  padding-top: 70px;
+ }
+
+ .navbar-right {
+  padding: 0px 10px 0px 40px;
+ }
+ .dropdown {
+ line-height: 50px;
+}
+
+.container-bg {
+  background-image: url("http://maps.googleapis.com/maps/api/staticmap?center=#{@location.latitude},#{@location.longitude}&zoom=9&size=440x400&style=element:geometry%7Ccolor:0xebe3cd&style=element:labels.text.fill%7Ccolor:0x523735&style=element:labels.text.stroke%7Ccolor:0xf5f1e6&style=feature:administrative%7Celement:geometry.stroke%7Ccolor:0xc9b2a6&style=feature:administrative.land_parcel%7Celement:geometry.stroke%7Ccolor:0xdcd2be&style=feature:administrative.land_parcel%7Celement:labels.text.fill%7Ccolor:0xae9e90&style=feature:landscape.natural%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:poi%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:poi%7Celement:labels.text.fill%7Ccolor:0x93817c&style=feature:poi.park%7Celement:geometry.fill%7Ccolor:0xa5b076&style=feature:poi.park%7Celement:labels.text.fill%7Ccolor:0x447530&style=feature:road%7Celement:geometry%7Ccolor:0xf5f1e6&style=feature:road.arterial%7Celement:geometry%7Ccolor:0xfdfcf8&style=feature:road.highway%7Celement:geometry%7Ccolor:0xf8c967&style=feature:road.highway%7Celement:geometry.stroke%7Ccolor:0xe9bc62&style=feature:road.highway.controlled_access%7Celement:geometry%7Ccolor:0xe98d58&style=feature:road.highway.controlled_access%7Celement:geometry.stroke%7Ccolor:0xdb8555&style=feature:road.local%7Celement:labels.text.fill%7Ccolor:0x806b63&style=feature:transit.line%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:transit.line%7Celement:labels.text.fill%7Ccolor:0x8f7d77&style=feature:transit.line%7Celement:labels.text.stroke%7Ccolor:0xebe3cd&style=feature:transit.station%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:water%7Celement:geometry.fill%7Ccolor:0xb9d3c2&style=feature:water%7Celement:labels.text.fill%7Ccolor:0x92998d")
+}
+
+.search-bar{
+  margin-top: 11px;
+}
+
+.add-request{
+  margin-left: -150px;
+   line-height: 50px;
+  }
+
+li{
+  list-style: none;
+}
+
+.header-requests{
+  font-size: 1.1em;
+}
+
+.req-specs{
+  font-size: .9em;
+}
+
+.logo {
+  border-radius: 0% 50% 50% 0%;
+}
+
+.neighbors{
+  width:100%;
+  margin-top: -100px;
+  background-color: white;
+
+}
+
+#jumbo {
+  padding-bottom: 0px;
+  opacity: .9;
+}
+
+.btn-success{
+  border-radius: 0 !important;
+}
+
+.thumbnail {
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.nav-btn {
+  border: none !important
+}
+
+.search-input {
+  border-radius: 0 !important;
+
+}
+
+.profile-pic{
+  border-radius:50%;
+}
+
+.glyphicon-wrench{
+  color:white;
+  font-size:1.3em;
+}
+
+.slider {
+  background-color:teal;
+}
+</style>
+  </head>
+  <body>
+    <nav>
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <%= image_tag "http://static.tumblr.com/9d93c0bba1667d34f8d7fa29a1b50775/ssfwhcy/jtKn3zprx/tumblr_static_2ugig39g5i8084cogcwgg0ks0.jpg", :width=> "70px", :height=> "50px", :class=> "logo navbar-left" %>
+        <a href="/" class="navbar-brand">Good Neighbor | <small>Lend a hammer, meet a neighbor</small></a>
+       
+       
+      </div>
+    </nav>
+    <div class= "jumbotron" id= "jumbo">
+      <%= image_tag "https://i.imgur.com/tANo68q.jpg", class: "neighbors" %>
+    </div>
+    
+    <div class="container">
+    
+
+
+    <%= yield %>
+
+  </div>
+  <div class="thumbnail col-md-7 col-md-offset-2">
+    <div class="title">
+      <p>Brett, there is a new request in oyur area: <span><%= @request.title %></span>
+      </p> 
+      <p><strong><%= @user.first_name %></strong> wrote:</p>
+      <p> "<%= @request.body %>"</p>
+      <p>  <%= mail_to @user.email, "Reply to them" %> </p>
+    </div>
+    </div>
+  </body>
+</html>

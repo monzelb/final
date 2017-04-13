@@ -7,4 +7,10 @@ class UserMailer < ApplicationMailer
     mail(to: @request.user.email, subject: 'subject')
   end
 
+  def request_notification(request, user)
+    @user = user
+    @request= request
+    mail(to: user.email, subject: 'subject')
+  end
+
 end

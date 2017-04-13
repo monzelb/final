@@ -24,6 +24,10 @@
       <ul>
         <li>Date Joined: <%= @user.created_at.strftime("%B %d, %Y")%></li>
       </ul>
+      <ul>
+        <li>Address: <%= @user.home_address%></li>
+      </ul>
+      
 
       <div class="center">
         <% if current_user  %>

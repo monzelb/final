@@ -28,13 +28,19 @@ class RequestsController < ApplicationController
 
   def create
     @request = current_user.requests.build(request_params)
+    @location = @request.address
+    @users = User.all
     if @request.save
+      User.all.each do |user|
+        if @request.distance_to(user.home_address) < 0.5 && !user.email.nil?
+        UserMailer.request_notification(@request, user).deliver_now
+        
+        end
       flash[:success] = 'Request added!'
-      redirect_to requests_path
-    else
-      render 'new'
     end
+    redirect_to requests_path
   end
+end
 
   private
 
