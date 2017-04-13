@@ -9,7 +9,7 @@
         <header><h4 class="display-4">Requests in your neighborhood</h4></header>
   <hr>
   
-  <% @requests.reverse_each do |request| %>
+  <% @requests.each do |request| %>
           <% if request.user != current_user %>
 
     <div class="thumbnail col-md-12">
