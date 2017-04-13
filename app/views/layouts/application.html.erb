@@ -82,12 +82,12 @@
               <ul class="nav">
                 <% current_user.requests.first(3).each do |request| %>
                 <li>
-                  <%= link_to request.title, request_path(request) %><small> <%= time_ago_in_words(request.updated_at) %> ago</small>
+                  <%= link_to request.title, request_path(request) %>
                 </li>
                 <% end %> 
                 <% current_user.comments.first(3).each do |comment| %>
                 <li>
-                  <%= link_to comment.request.title, request_path(comment.request) %><small> <%= time_ago_in_words(comment.created_at) %> ago</small>
+                  <%= link_to comment.request.title, request_path(comment.request) %>
                 </li>
                 <% end %> 
 

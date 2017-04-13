@@ -12,7 +12,11 @@
 </div>
 <div class="row">
     <ul>
-      <%= render @requests %>
+      <% @requests.reverse.each do |request|%>
+        <% if request.user != current_user %>
+          <%= render request %>
+        <% end%>
+      <% end %>
     </ul>
 </div>
 

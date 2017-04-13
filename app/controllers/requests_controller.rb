@@ -17,7 +17,7 @@ class RequestsController < ApplicationController
 
   def search
     @location= params[:address]
-    @requests = Request.geocoded.near(@location, 10)
+    @requests = Request.geocoded.near(@location, 5).order("created_at")
     @key = ENV['google_maps_api_key']
   end
 
