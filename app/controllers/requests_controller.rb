@@ -4,7 +4,7 @@ class RequestsController < ApplicationController
   def index
     @location = current_user.home_address
     @key = ENV['google_maps_api_key']
-    @requests = Request.geocoded.near(@location, 10)
+    @requests = Request.geocoded.near(@location, 2).order("created_at")
 
   end
 
