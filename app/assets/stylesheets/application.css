@@ -72,6 +72,7 @@ li{
 
 .btn-success{
   border-radius: 0 !important;
+  opacity: .8
 }
 
 .thumbnail {
@@ -144,8 +145,6 @@ li{
   margin-left:20px;
 }
 
-.slide-image{
-  
-}
+
 
 

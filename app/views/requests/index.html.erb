@@ -50,10 +50,15 @@
         <br>
         <span class="req-specs"> <%= time_ago_in_words(request.created_at) %> ago</span>
         <p> </p>
-      <p class="content-requests"><%= raw request.body.truncate(1000, separator: ' ') %></p>
+        <p class="content-requests"><%= raw request.body.truncate(1000, separator: ' ') %></p>
+      </div>
+      <div class="title col-md-2 ">
+        <% if request.user != current_user %>
         <%= link_to "reply", request_path(request), class: "btn btn-success" %>
-      <span class="num-replies"> <%= request.comments.length %> replies</span>
-    </div>
+        <br>
+        <% end %>
+        <span class="num-replies"> <%= request.comments.length %> replies</span>
+      </div>
     </div>
   <% end %>
 </div>

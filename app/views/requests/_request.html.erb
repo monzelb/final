@@ -1,16 +1,32 @@
-<div class="thumbnail col-md-10 col-md-offset-1">
-      <div class="title">
-        <a class="header-requests"><%= link_to request.title, request_path(request) %> 
+    <div class="thumbnail col-md-7 col-md-offset-2">
+      <div class="col-md-2 user-caption-index">
+        <% if !request.user[:avatar].nil? %>
+        <%= image_tag request.user[:avatar], :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
+        <% else %>
+          <%= image_tag ("https://api.adorable.io/avatars/200/abott@adorable.png"), :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
+        <% end%>
+        <br>
+        <span class="req-specs"><%= request.user.first_name %> </span>
+        <br>
+        <% if request.user != current_user %>
+         <span class="req-specs"><%= request.distance_to(current_user.home_address).round(1) %> mi away</span>
+        <% end%>
+
+      </div>
+      <div class="title col-md-6 col-md-offset-1">
+        <a> <strong class="header-requests"><%= link_to request.title, request_path(request) %> </strong>
         </a>
         <br>
-        <span class="req-specs"><strong><%= request.user.first_name %></strong> </span>,
-        <span class="req-specs"><%= request.distance_to(@location).round(1) %> miles away</span>
-        <span class="req-specs"> - <%= time_ago_in_words(request.created_at) %> ago</span>
+        <span class="req-specs"> <%= time_ago_in_words(request.created_at) %> ago</span>
+        <p> </p>
+        <p class="content-requests"><%= raw request.body.truncate(1000, separator: ' ') %></p>
       </div>
-      <p class="content-requests"><%= raw request.body.truncate(1000, separator: ' ') %></p>
-      <hr>
-      <div class ="reply-btn">
+      <div class="title col-md-2 ">
+        <% if request.user != current_user %>
         <%= link_to "reply", request_path(request), class: "btn btn-success" %>
+        <br>
+        <% end %>
+        <span class="num-replies"> <%= request.comments.length %> replies</span>
       </div>
     </div>
 
