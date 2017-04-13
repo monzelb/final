@@ -2,29 +2,26 @@
     <div class= "col-md-7 col-md-offset-2">
       <h4>Hello, <%= current_user.first_name%>! Browse requests in your neighborhood, or <%= link_to ' Make a request', new_request_path %></h4>
       <hr>
-    </div>
-      <div class= "col-md-7 col-md-offset-2">
-
+    
       <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{current_user.home_address}&zoom=13&size=700x300&markers=color:blue|#{current_user.home_address}&key=#{@key}&style=element:geometry%7Ccolor:0xebe3cd&style=element:labels.text.fill%7Ccolor:0x523735&style=element:labels.text.stroke%7Ccolor:0xf5f1e6&style=feature:administrative%7Celement:geometry.stroke%7Ccolor:0xc9b2a6&style=feature:administrative.land_parcel%7Celement:geometry.stroke%7Ccolor:0xdcd2be&style=feature:administrative.land_parcel%7Celement:labels.text.fill%7Ccolor:0xae9e90&style=feature:landscape.natural%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:poi%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:poi%7Celement:labels.text.fill%7Ccolor:0x93817c&style=feature:poi.park%7Celement:geometry.fill%7Ccolor:0xa5b076&style=feature:poi.park%7Celement:labels.text.fill%7Ccolor:0x447530&style=feature:road%7Celement:geometry%7Ccolor:0xf5f1e6&style=feature:road.arterial%7Celement:geometry%7Ccolor:0xfdfcf8&style=feature:road.highway%7Celement:geometry%7Ccolor:0xf8c967&style=feature:road.highway%7Celement:geometry.stroke%7Ccolor:0xe9bc62&style=feature:road.highway.controlled_access%7Celement:geometry%7Ccolor:0xe98d58&style=feature:road.highway.controlled_access%7Celement:geometry.stroke%7Ccolor:0xdb8555&style=feature:road.local%7Celement:labels.text.fill%7Ccolor:0x806b63&style=feature:transit.line%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:transit.line%7Celement:labels.text.fill%7Ccolor:0x8f7d77&style=feature:transit.line%7Celement:labels.text.stroke%7Ccolor:0xebe3cd&style=feature:transit.station%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:water%7Celement:geometry.fill%7Ccolor:0xb9d3c2&style=feature:water%7Celement:labels.text.fill%7Ccolor:0x92998d",
                     class: 'img-fluid img-rounded', alt: "#{current_user.first_name} on the map"%>
         <br>
         <hr>
-      </div>
-  <div class="col-md-2 col-md-offset-1">
-    <div data-spy="affix" data-offset-top="0" class = "thumbnail slider col-md-2 col-md-offset-1">
-      <div class="col-md-2 user-caption-index">
-        <% if !current_user[:avatar].nil? %>
-        <%= image_tag current_user[:avatar], :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
-        <% else %>
+  </div>
+    <div class="col-md-2 col-md-offset-1">
+      <div data-spy="affix" data-offset-top="50" class = "slider col-md-2 col-md-offset-1">
+        <div class="col-md-2 slide-image">
+          <% if !current_user[:avatar].nil? %>
+          <%= image_tag current_user[:avatar], :width=> "50px", :height=> "50px", :class=> "profile-pic-slide" %>
+          <% else %>
           <%= image_tag ("https://api.adorable.io/avatars/200/abott@adorable.png"), :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
-        <% end%>
-        <br>
-        <span class="req-specs"><%= current_user.first_name %> </span>
-        <br>
-        
-
+          <% end%>
+          <br>
+          <span class="req-specs"> Your activity:</span>
+          <br>
+          <span>
+        </div>
       </div>
-    </div>
     </div>
   </div>
   <div class= "col-md-7 col-md-offset-2">      <header><h4 class="display-4">Requests in your neighborhood</h4></header>

@@ -24,6 +24,7 @@
 
  body { 
   padding-top: 70px;
+  overflow:scroll;
  }
 
  .navbar-right {
@@ -98,7 +99,6 @@ li{
 }
 
 .slider {
-  background-color:teal;
 }
 
 .req-header {
@@ -132,6 +132,20 @@ li{
 
 .num-replies{
   font-size: .8em;
+}
+
+.affix {
+    top:270px;
+    right:0;
+    position:fixed;
+}
+
+.profile-pic-slide{
+  margin-left:20px;
+}
+
+.slide-image{
+  
 }
 
 
