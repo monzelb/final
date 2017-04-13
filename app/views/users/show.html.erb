@@ -1,17 +1,12 @@
 
 
-
-
-
-
-
     <div class= "col-md-5 col-md-offset-3 user-show">
-      <h4><%= @user.first_name %></h4>
+      <h4><%= @user.first_name %> <%= @user.last_name %></h4>
        <div class="user-show-pic">
           <% if @user.avatar.nil? %>
             <%= image_tag("https://api.adorable.io/avatars/200/abott@adorable.png") %>
           <% else %>
-<%= image_tag current_user.avatar, :width=> "150px", :height=> "150px" %>
+            <%= image_tag current_user.avatar, :width=> "150px", :height=> "150px" %>
           <% end %>
       </div>
       <br>
