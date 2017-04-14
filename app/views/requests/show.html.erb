@@ -25,8 +25,8 @@
       <br>
       <p class="content-requests"><%= raw @request.body.truncate(1000, separator: ' ') %></p>
       <% if current_user && current_user == @request.user%>
-          <%= link_to "Delete", requests_destroy_path(@request), method: 'delete', data: {:confirm => 'Are you sure you want to delete '+ "?"} %>
-        <%end%>  
+        <%= link_to "Delete", requests_destroy_path(@request), method: 'delete', data: {:confirm => 'Are you sure you want to delete '+ "?"} %>
+      <%end%>  
     </div>
     <hr>
 
@@ -55,9 +55,8 @@
             <%= link_to "Delete", comment_destroy_path(comment), method: 'delete', data: {:confirm => 'Are you sure you want to delete '+ "?"} %>
           <%end%>  
       </div>
-
-
     <% end %>
+
   </div>
   
 </div>

@@ -7,38 +7,38 @@
         <hr>
 
         <header><h4 class="display-4">Requests in your neighborhood</h4></header>
-  <hr>
+        <hr>
   
-  <% @requests.each do |request| %>
-          <% if request.user != current_user %>
+        <% @requests.each do |request| %>
+                <% if request.user != current_user %>
 
-    <div class="thumbnail col-md-12">
-      <div class="col-md-2 user-caption-index">
-        <% if !request.user[:avatar].nil? %>
-        <%= image_tag request.user[:avatar], :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
-        <% else %>
-          <%= image_tag ("https://api.adorable.io/avatars/200/abott@adorable.png"), :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
-        <% end%>
-        <br>
-        <span class="req-specs"><%= request.user.first_name %> </span>
-        <br>
-         <span class="req-specs"><%= request.distance_to(current_user.home_address).round(1) %> mi away</span>
+          <div class="thumbnail col-md-12">
+            <div class="col-md-2 user-caption-index">
+              <% if !request.user[:avatar].nil? %>
+              <%= image_tag request.user[:avatar], :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
+              <% else %>
+                <%= image_tag ("https://api.adorable.io/avatars/200/abott@adorable.png"), :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
+              <% end%>
+              <br>
+              <span class="req-specs"><%= request.user.first_name %> </span>
+              <br>
+               <span class="req-specs"><%= request.distance_to(current_user.home_address).round(1) %> mi away</span>
 
-      </div>
-      <div class="title col-md-6 col-md-offset-1">
-        <a> <strong class="header-requests"><%= link_to request.title, request_path(request) %> </strong>
-        </a>
-        <br>
-        <span class="req-specs"> <%= time_ago_in_words(request.created_at) %> ago</span>
-        <p> </p>
-        <p class="content-requests"><%= raw request.body.truncate(1000, separator: ' ') %></p>
-      </div>
-      <div class="title col-md-2 ">
-        <%= link_to "reply", request_path(request), class: "btn btn-success" %>
-        <br>
-        <span class="num-replies"> <%= request.comments.length %> replies</span>
-      </div>
+            </div>
+            <div class="title col-md-6 col-md-offset-1">
+              <a> <strong class="header-requests"><%= link_to request.title, request_path(request) %> </strong>
+              </a>
+              <br>
+              <span class="req-specs"> <%= time_ago_in_words(request.created_at) %> ago</span>
+              <p> </p>
+              <p class="content-requests"><%= raw request.body.truncate(1000, separator: ' ') %></p>
+            </div>
+            <div class="title col-md-2 ">
+              <%= link_to "reply", request_path(request), class: "btn btn-success" %>
+              <br>
+              <span class="num-replies"> <%= request.comments.length %> replies</span>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     </div>
-    <% end %>
-  <% end %>
-</div>
