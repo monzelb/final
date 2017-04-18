@@ -15,3 +15,11 @@
 //= require turbolinks
 //= require_tree .
 
+$(document).ready(function () {
+$('#nav').affix({
+    offset: {
+        top: $('#nav').offset().top
+    }
+});
+
+})
