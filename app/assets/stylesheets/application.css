@@ -136,17 +136,12 @@ li{
 }
 
 .affix {
-    top:330px;
+    top:300px;
     left:0;
-    width: 213px;
     position:fixed;
 }
 
-@media (min-width: 1200px) {
-  .affix {
-    width: 263px;
-  }         
-}
+
 
 .profile-pic-slide{
   margin-left:20px;
