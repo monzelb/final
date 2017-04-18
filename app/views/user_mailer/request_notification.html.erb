@@ -98,8 +98,6 @@ li{
       <div class="navbar navbar-inverse navbar-fixed-top">
         <%= image_tag "http://static.tumblr.com/9d93c0bba1667d34f8d7fa29a1b50775/ssfwhcy/jtKn3zprx/tumblr_static_2ugig39g5i8084cogcwgg0ks0.jpg", :width=> "70px", :height=> "50px", :class=> "logo navbar-left" %>
         <a href="/" class="navbar-brand">Good Neighbor | <small>Lend a hammer, meet a neighbor</small></a>
-       
-       
       </div>
     </nav>
     <div class= "jumbotron" id= "jumbo">
@@ -107,20 +105,18 @@ li{
     </div>
     
     <div class="container">
-    
-
-
+  
     <%= yield %>
 
-  </div>
-  <div class="thumbnail col-md-7 col-md-offset-2">
-    <div class="title">
-      <p>Hey Neighbor, there is a new request in your area: <span><%= @request.title %></span>
-      </p> 
-      <p><strong><%= @user.first_name %></strong> wrote:</p>
-      <p> "<%= @request.body %>"</p>
-      <p>  <%= mail_to @user.email, "Reply to them" %> </p>
     </div>
-    </div>
-  </body>
-</html>
+    <div class="thumbnail col-md-7 col-md-offset-2">
+      <div class="title">
+        <p>Hey Neighbor, there is a new request in your area: <span><%= @request.title %></span>
+        </p> 
+        <p><strong><%= @user.first_name %></strong> wrote:</p>
+        <p> "<%= @request.body %>"</p>
+        <p>  <%= mail_to @user.email, "Reply to them" %> </p>
+      </div>
+      </div>
+    </body>
+  </html>

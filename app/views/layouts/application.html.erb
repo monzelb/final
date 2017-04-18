@@ -33,7 +33,7 @@
           <ul class="navbar-nav navbar-right ">
             <li class= "add-request"><span class="glyphicon glyphicon-wrench "></span><%= link_to ' Make a request', new_request_path %></li>
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <a class="dropdown-toggle droppy" data-toggle="dropdown" href="#">
                 <% if !current_user[:avatar].nil? %>
                   <%= image_tag current_user[:avatar], :width=> "30px", :height=> "30px", :class=> "profile-pic" %>
                 <% else %>
