@@ -34,7 +34,7 @@ class RequestsController < ApplicationController
         if @request.distance_to(user.home_address) < 0.5 && !user.email.nil?
         UserMailer.request_notification(@request, user).deliver_now
         end
-        flash[:success] = "Thanks for posting a request! Your neighbors will be notified."
+        flash[:success] = "Thanks for posting a request! Your neighbors will receive an email letting them know."
       end
       redirect_to requests_path
     end
