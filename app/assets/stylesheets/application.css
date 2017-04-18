@@ -151,6 +151,9 @@ li{
   height:90px;
 }
 
+.droppy:hover {
+  color: inherit !important;
+}
 
 
 .hover-pic:hover {
