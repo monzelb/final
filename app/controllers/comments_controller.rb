@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
     end
     if @comment.save
         UserMailer.comment_notification(@comment, @request).deliver_now
-        flash[:success] = "Thanks for commenting!"
+        flash[:success] = "Thanks for responding! The person who posted the request will be notified."
         redirect_to request_path(params[:request_id])
     else
         flash[:danger] = "All fields must be filled in to post a comment."
