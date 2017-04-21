@@ -40,7 +40,7 @@
 }
 
 .add-request{
-  margin-left: -150px;
+  margin-left: -160px;
    line-height: 50px;
   }
 
@@ -171,5 +171,9 @@ li{
 
 .search-results{
   padding-left: 120px;
+}
+
+.logo-div {
+  margin-left: -15px !important;
 }
 

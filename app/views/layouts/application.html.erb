@@ -14,11 +14,16 @@
 
   <body>
     <nav>
+    <div class="container-fluid">
       <div class="navbar navbar-inverse navbar-fixed-top">
+          <div class="col-sm-1 logo-div hidden-sm hidden-xs">
         <%= image_tag "http://static.tumblr.com/9d93c0bba1667d34f8d7fa29a1b50775/ssfwhcy/jtKn3zprx/tumblr_static_2ugig39g5i8084cogcwgg0ks0.jpg", :width=> "70px", :height=> "50px", :class=> "logo navbar-left" %>
+        </div>
+        <div class="col-md-6">
         <a href="/" class="navbar-brand">Good Neighbor | <small>Lend a hammer, meet a neighbor</small></a>
+        </div>
         <% if current_user %>
-        <div class="col-sm-4 col-sm-offset-1 search-bar">
+        <div class="col-md-2  hidden-sm hidden-xs search-bar">
           <div class="input-group">
             <%= form_tag("/search", method: "get") do %>
               <%= text_field_tag :address, nil, placeholder: "Go to an address", class: "search-input input-sm"  %>
@@ -30,7 +35,7 @@
         <ul class="navbar-right">  
         </ul>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav navbar-right ">
+          <ul class="navbar-nav navbar-right hidden-sm hidden-xs ">
             <li class= "add-request"><span class="glyphicon glyphicon-wrench "></span><%= link_to ' Make a request', new_request_path %></li>
             <li class="dropdown">
               <a class="dropdown-toggle droppy" data-toggle="dropdown" href="#">
@@ -52,6 +57,7 @@
           <% end %>
         </div>
        
+      </div>
       </div>
     </nav>
 
